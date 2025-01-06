@@ -19,7 +19,7 @@
         ref="thumb"
         :class="`${prefixClass}-scrollbar-thumb`"
         :style="{ height: thumbHeight, top: thumbTop }"
-        @mousedown="handleDragstart"
+        @mousedown.native="handleDragstart"
       ></div>
     </div>
   </div>
@@ -28,6 +28,7 @@
 <script>
 /* istanbul ignore file */
 import getScrollbarWidth from '../util/scrollbar-width';
+import isMobile from '../util/isMobile';
 
 export default {
   inject: {
@@ -65,6 +66,7 @@ export default {
       this.thumbTop = `${(scrollTop * 100) / scrollHeight}%`;
     },
     handleDragstart(evt) {
+      if (isMobile()) return;
       evt.stopImmediatePropagation();
       this._draggable = true;
       const { offsetTop } = this.$refs.thumb;
