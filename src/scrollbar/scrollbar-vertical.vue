@@ -19,7 +19,6 @@
         ref="thumb"
         :class="`${prefixClass}-scrollbar-thumb`"
         :style="{ height: thumbHeight, top: thumbTop }"
-        @mousedown.native="handleDragstart"
       ></div>
     </div>
   </div>
